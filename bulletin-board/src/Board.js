@@ -19,7 +19,9 @@ class Board extends Component {
         if(this.props.count) {
             fetch(`https://baconipsum.com/api/?type=all-meet&sentences=${this.props.count}`)
             .then(response => response.json())
-            .then(json => json [0].split('. ').forEach(sentence => self.add(sentence.substring(0, 25))))
+            .then(json => json [0]
+                .split('. ')
+                .forEach(sentence => self.add(sentence.substring(0, 25))))
         }
     }
     add(text){
@@ -27,7 +29,7 @@ class Board extends Component {
             notes: [
                 ...prevState.notes,
                 {
-                    id: 3,
+                    id: this.nextId(),
                     note: text
                 }
             ]
@@ -42,7 +44,7 @@ class Board extends Component {
         console.log('updating iten at index', i, newText)
         this.setState(prevState => ({
             notes: prevState.notes.map(
-                note=> (note.id !== i)? note : {...note , note: newText}
+                note => (note.id !== i)? note : {...note , note: newText}
             )
  
 
@@ -57,8 +59,8 @@ class Board extends Component {
 
     eachNote(note, i){
         return (
-        <Note key={i}
-            index={i}
+        <Note key={note.id}
+            index={note.id}
             onChange={this.update}
             onRemove={this.remove}>
             {note.note}
@@ -70,7 +72,8 @@ class Board extends Component {
         return(
             <div className="board">
             {this.state.notes.map(this.eachNote)}
-            <button onClick={this.add.bind(null, "New Note")} id = "add">
+            <button onClick={this.add.bind(null, "New Note")} 
+            id = "add">
             <FaPlus /></button>
             </div>
         )
