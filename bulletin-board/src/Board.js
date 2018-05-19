@@ -22,6 +22,7 @@ class Board extends Component {
         }
         this.eachNote = this.eachNote.bind(this)
         this.update = this.update.bind(this)
+        this.remove = this.remove.bind(this)
     }
     update(newText , i){
         console.log('updating iten at index', i, newText)
@@ -33,12 +34,19 @@ class Board extends Component {
 
         }))
     }
+    remove(id) {
+        console.log('removing item at', id)
+        this.setState(prevState => ({
+            notes: prevState.notes.filter(note => note.id !== id)
+        }))
+    }
 
     eachNote(note, i){
         return (
         <Note key={i}
             index={i}
-            onChange={this.update}>
+            onChange={this.update}
+            onRemove={this.remove}>
             {note.note}
         </Note>
 
