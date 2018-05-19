@@ -6,6 +6,8 @@
     <style>
         #fancy {
             background-color: royalblue;
+            height: 200px;
+            width:200px;
         }
 
         .heading {
@@ -15,15 +17,17 @@
     <script crossorigin src="https://unpkg.com/react@16.3.2/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
-    <title>getting started with react</title>
+    <title>getting started with react
+        COMPONENT LIFE CYCLE
+    </title>
 </head>
 
 <body>
     <div id="react-container"></div>
     <script type="text/babel">
-        /*
-        const Banner =() => (
-            <div id ="fancy">
+        /* const Banner =() => (
+        
+       <div id ="fancy">
             <h1 className="heading"> Welcome to react</h1> 
             <p>have fun</p>
 
@@ -41,8 +45,8 @@
 
 
         const HelloStateless = ({firstName}) => <h1>hello{firstName}</h1> 
-        */
-        class Checkbox extends React.Component {
+        
+    class Checkbox extends React.Component {
             constructor(props) {
          super(props)
          this.state = {
@@ -78,7 +82,24 @@
              <Checkbox />,
             document.getElementById('react-container')
         )
-        
+        */
+       class Box extends React.Component {
+           componentWillMount(){
+               alert('component is about to mount')
+           }
+
+        componentDidMount(){
+            alert('component has just mounted')
+        }
+        render() {
+               return(
+                   <div id="fancy"></div>
+               )
+           }
+       }
+
+       ReactDOM.render(<Box />, document.getElementById('react-container'))
+
         </script>
 </body>
 
