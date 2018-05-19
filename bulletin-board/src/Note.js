@@ -28,14 +28,14 @@ class Note extends Component{
         alert('remove note')
     }
     save(){
-        alert('saved')
+        alert(this.newText.value)
     }
 
     renderForm(){
         return(
             <div className= "note">
             <form>
-            <textarea />
+            <textarea ref={input => this.newText =input} />
             <button onClick ={this.save}><FaFloppyO /></button>
 
             </form>
