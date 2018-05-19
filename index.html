@@ -84,16 +84,26 @@
         )
         */
        class Box extends React.Component {
-           componentWillMount(){
-               alert('component is about to mount')
+           constructor (props){
+               super(props)
+               this.state = {
+                   backgroundColor: 'purple'
+               }
+               this.update = this.update.bind(this)
            }
-
-        componentDidMount(){
-            alert('component has just mounted')
-        }
+           update() {
+               this.setState({
+                   backgroundColor: 'green'
+               })
+           }
+           componentDidUpdate(){
+               alert('this component has been updated')
+           }
+           
         render() {
                return(
-                   <div id="fancy"></div>
+                   <div id="fancy" style={this.state}
+                   onClick={this.update}></div>
                )
            }
        }
