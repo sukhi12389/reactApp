@@ -11,7 +11,8 @@ const percentToDecimal = (decimal) => {
     const calcGoalProgress = (total,goal) => {
         return percentToDecimal(total/goal)
     }
-    export const SkiDayCount = ({total,powder,backcountry,goal}) => (
+    export const SkiDayCount = ({total=70,powder=20,
+                                 backcountry= 34,goal=10}) => (
             <div className="ski-day-count">
                <div className="total-days">
                  <span>{total}</span>
@@ -36,4 +37,4 @@ const percentToDecimal = (decimal) => {
                 </div>
                 </div>
         )
-    
+        
