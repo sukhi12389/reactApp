@@ -42,4 +42,5 @@ const percentToDecimal = (decimal) => {
             total: PropTypes.number,
            powder: PropTypes.number,
            backcountry: PropTypes.number,
+           goal: PropTypes.number
    }
