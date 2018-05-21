@@ -7,7 +7,7 @@ window.React = React
 
 
 render(
-	<App/>, 
+	<App />, 
 	document.getElementById('react-container')
 )
 
